@@ -1,6 +1,6 @@
 """Case-study #4 Text analysis
 Developers:
-Batenev P.A.(47%), Grigorev A.E.(55%), Dolgih N.A.
+Batenev P.A.(46%), Grigorev A.E.(55%), Dolgih N.A. (39%)
 """
 
 from rulocal import *
@@ -13,14 +13,21 @@ count_syllables = text_.count(RUS_VOWELS[0]) + text_.count(RUS_VOWELS[1])\
                   + text_.count(RUS_VOWELS[2]) + text_.count(RUS_VOWELS[3])\
                   + text_.count(RUS_VOWELS[4]) + text_.count(RUS_VOWELS[5])\
                   + text_.count(RUS_VOWELS[6]) + text_.count(RUS_VOWELS[7])\
-                  + text_.count(RUS_VOWELS[8])
-
-asl = None
-asw = None
-fre = None
+                  + text_.count(RUS_VOWELS[8]) + text_.count(RUS_VOWELS[9])
+asl = count_words/count_sentence
+asw = count_syllables/count_words
+fre = 206.835 - (1.3 * asl) - (60.1 * asw)
 print(SENTENCE, count_sentence)
 print(WORDS, count_words)
 print(SYLLABLES, count_syllables)
 print(ASL, asl)
-print(asw, ASW)
-print(fre, FRE)
+print(ASW, asw)
+print(FRE, fre)
+if fre > 80:
+    print(SIMPLE)
+elif fre > 50:
+    print(EASY)
+elif fre > 25:
+    print(MEDIATE)
+else:
+    print(HARD)
